@@ -42,6 +42,8 @@ export const ArticleParamsForm = ({
 
 	// Обработчик закрытия формы, если нажимаем Escape
 	useEffect(() => {
+		if (!form) return;
+
 		function closeForm(event: KeyboardEvent) {
 			if (event.key === 'Escape') {
 				setForm(false);
@@ -57,7 +59,7 @@ export const ArticleParamsForm = ({
 			document.removeEventListener('keydown', closeForm);
 			document.removeEventListener('mousedown', closeClickForm);
 		};
-	}, []);
+	}, [form]);
 
 	// Ссылка на элемент формы для отслеживания кликов вне формы
 	const ref = useRef<HTMLFormElement | null>(null);
